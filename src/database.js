@@ -1,6 +1,7 @@
 const Database = require('better-sqlite3'); 
 const db = new Database('database.db');
 
+    //produtoras
 db.exec(`
         CREATE TABLE IF NOT EXISTS produtoras(
             id INTEGER PRIMARY KEY AUTOINCREMENT,

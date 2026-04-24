@@ -10,14 +10,10 @@ router.post("/", (req, res) => {
         return res.status(400).json({erro: "Dados obrigatórios!"});
     }
 
-    db.run(
+    const stmt = db.prepare(
         "INSERT INTO produtoras (cnpj, nome, website) VALUES (?, ?, ?)",
-        [cnpj, nome, website],
-        function(err){
-            if (err) return res.status(500).json(err);
-            res.json({id: this.lastID})
-        }
     );
+    const resultado = stmt.run(cnpj, nome, website);
 });
 
 //GET
